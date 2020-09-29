@@ -15,6 +15,9 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AggregatorApiImpl implements AggregatorApi {
 
+    CrmConsumer bananaCrm;
+    CrmConsumer strawberryCrm;
+
     @Override
     public List<SupportCase> get(String product) {
         System.out.println(product);
@@ -24,5 +27,15 @@ public class AggregatorApiImpl implements AggregatorApi {
         List<SupportCase> result = new ArrayList<>();
         result.add(supportCase);
         return result;
+    }
+
+    @Override
+    public List<SupportCase> getBanana() {
+        return null;
+    }
+
+    @Override
+    public List<SupportCase> getStrawberry() {
+        return null;
     }
 }

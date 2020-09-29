@@ -1,0 +1,15 @@
+crm:
+  banana:
+    endpoint: https://fakebanky.herokuapp.com/fruit/banana
+    hasArrayWrapper: true
+    products:
+      - Blue
+      - Red
+      - Green
+
+  strawberry:
+    endpoint: https://fakebanky.herokuapp.com/fruit/strawberry
+    hasArrayWrapper: false
+    products:
+      - Red
+      - Green
