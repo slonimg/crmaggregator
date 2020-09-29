@@ -31,11 +31,11 @@ public class AggregatorApiImpl implements AggregatorApi {
 
     @Override
     public List<SupportCase> getBanana() {
-        return null;
+        return bananaCrm.getData();
     }
 
     @Override
     public List<SupportCase> getStrawberry() {
-        return null;
+        return strawberryCrm.getData();
     }
 }

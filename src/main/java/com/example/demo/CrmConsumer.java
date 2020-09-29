@@ -21,11 +21,15 @@ public class CrmConsumer {
 
     // local
     Instant lastRefresh;
+    WebClient client = WebClient.builder()
+            .codecs(configurer -> configurer
+                    .defaultCodecs()
+                    .maxInMemorySize(50 * 1024 * 1024)
+            ).build();
     ObjectMapper mapper = new ObjectMapper();
 
     public List<SupportCase> getData() {
-        WebClient.ResponseSpec responseSpec = WebClient
-                .create()
+        WebClient.ResponseSpec responseSpec = client
                 .get()
                 .uri(endpoint)
                 .retrieve();
