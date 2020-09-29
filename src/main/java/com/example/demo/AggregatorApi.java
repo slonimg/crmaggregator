@@ -11,4 +11,10 @@ public interface AggregatorApi {
 
     @GetMapping(value = "")
     List<SupportCase> get(@RequestParam(name = "product", required = false) String product);
+
+    @GetMapping(value = "banana")
+    List<SupportCase> getBanana();
+
+    @GetMapping(value = "strawberry")
+    List<SupportCase> getStrawberry();
 }

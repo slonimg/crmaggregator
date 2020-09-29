@@ -1,4 +1,6 @@
 package com.example.demo;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
@@ -12,5 +14,17 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
         AntPathMatcher matcher = new AntPathMatcher();
         matcher.setCaseSensitive(false);
         configurer.setPathMatcher(matcher);
+    }
+
+    @Bean
+    @ConfigurationProperties("crm.banana")
+    public CrmConsumer bananaCrm(){
+        return new CrmConsumer();
+    }
+
+    @Bean
+    @ConfigurationProperties("crm.strawberry")
+    public CrmConsumer strawberryCrm(){
+        return new CrmConsumer();
     }
 }
