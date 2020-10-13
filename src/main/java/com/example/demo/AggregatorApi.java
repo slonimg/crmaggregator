@@ -10,7 +10,7 @@ import java.util.List;
 public interface AggregatorApi {
 
     @GetMapping(value = "")
-    List<SupportCase> get(@RequestParam(name = "product", required = false) String product);
+    List<SupportCase> get(@RequestParam(name = "product", required = false, defaultValue = "") String product);
 
     @GetMapping(value = "banana")
     List<SupportCase> getBanana();

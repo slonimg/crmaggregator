@@ -31,4 +31,11 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
     @Bean
     @ConfigurationProperties("crm.constraints")
     public CrmConstraintsHandler crmConstraintsHandler() { return new CrmConstraintsHandler(); }
+
+    @Bean
+    public StorageManager storageManager() { return new StorageManager(
+            bananaCrm(),
+            strawberryCrm(),
+            crmConstraintsHandler());
+    }
 }

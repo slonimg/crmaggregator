@@ -5,10 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -17,15 +16,22 @@ public class AggregatorApiImpl implements AggregatorApi {
 
     CrmConsumer bananaCrm;
     CrmConsumer strawberryCrm;
+    StorageManager storageManager;
 
     @Override
     public List<SupportCase> get(String product) {
-        System.out.println(product);
-
-        SupportCase supportCase = new SupportCase(1, "BLUE", 123, "456", 789, "Open",
-                Date.from(Instant.now().minusSeconds(2592000)), Date.from(Instant.now()));
         List<SupportCase> result = new ArrayList<>();
-        result.add(supportCase);
+
+        storageManager.refreshData();
+        for (SupportCase supportCase : storageManager.getSupportCases().values()){
+            if (!product.isEmpty()) {
+                if (Objects.equals(supportCase.getProductName(), product)) {
+                    result.add(supportCase);
+                }
+        } else {
+            result.add(supportCase);
+        }
+    }
         return result;
     }
 
