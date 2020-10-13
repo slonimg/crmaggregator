@@ -19,12 +19,16 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
     @Bean
     @ConfigurationProperties("crm.banana")
     public CrmConsumer bananaCrm(){
-        return new CrmConsumer();
+        return new CrmConsumer(crmConstraintsHandler());
     }
 
     @Bean
     @ConfigurationProperties("crm.strawberry")
     public CrmConsumer strawberryCrm(){
-        return new CrmConsumer();
+        return new CrmConsumer(crmConstraintsHandler());
     }
+
+    @Bean
+    @ConfigurationProperties("crm.constraints")
+    public CrmConstraintsHandler crmConstraintsHandler() { return new CrmConstraintsHandler(); }
 }

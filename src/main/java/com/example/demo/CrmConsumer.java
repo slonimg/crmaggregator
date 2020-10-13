@@ -15,9 +15,14 @@ import java.util.*;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CrmConsumer {
     // Configurations
+    CrmConstraintsHandler crmConstraintsHandler;
     boolean hasArrayWrapper;
     URI endpoint;
     Set<String> products;
+
+    public CrmConsumer(CrmConstraintsHandler crmConstraintsHandler) {
+        this.crmConstraintsHandler = crmConstraintsHandler;
+    }
 
     // local
     Instant lastRefresh;
@@ -29,6 +34,10 @@ public class CrmConsumer {
     ObjectMapper mapper = new ObjectMapper();
 
     public List<SupportCase> getData() {
+        if (!crmConstraintsHandler.canExecute(products, lastRefresh)) {
+            return null;
+        }
+
         WebClient.ResponseSpec responseSpec = client
                 .get()
                 .uri(endpoint)

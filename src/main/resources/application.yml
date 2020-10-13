@@ -13,3 +13,9 @@ crm:
     products:
       - Red
       - Green
+
+  constraints:
+    productMinimalRefreshTime:
+      Red: 30
+      Green: 30
+      Blue: 120
