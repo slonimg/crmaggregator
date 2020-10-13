@@ -36,11 +36,11 @@ public class SupportCase {
     String status;
 
     @JsonProperty("TICKET_CREATION_DATE")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "M/d/yyyyH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "M/d/yyyy H:mm")
     Date creationTime;
 
     @JsonProperty("LAST_MODIFIED_DATE")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "M/d/yyyyH:mm")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "M/d/yyyy H:mm")
     @JsonDeserialize()
     Date updateTime;
 }
