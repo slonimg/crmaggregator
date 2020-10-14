@@ -8,7 +8,7 @@ import java.util.*;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class StorageManager {
+public class AggregationManager {
 
     // conifguration
     CrmConsumer bananaCrm;
@@ -19,9 +19,9 @@ public class StorageManager {
     Map<Integer, SupportCase> supportCases;
     List<CrmConsumer> consumers;
 
-    public StorageManager(@Qualifier("bananaCrm") CrmConsumer bananaCrm,
-                          @Qualifier("strawberryCrmmm") CrmConsumer strawberryCrm,
-                          CrmConstraintsHandler crmConstraintsHandler) {
+    public AggregationManager(@Qualifier("bananaCrm") CrmConsumer bananaCrm,
+                              @Qualifier("strawberryCrmmm") CrmConsumer strawberryCrm,
+                              CrmConstraintsHandler crmConstraintsHandler) {
         this.bananaCrm = bananaCrm;
         this.strawberryCrm = strawberryCrm;
         this.crmConstraintsHandler = crmConstraintsHandler;

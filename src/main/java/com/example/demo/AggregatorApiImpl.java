@@ -16,14 +16,14 @@ public class AggregatorApiImpl implements AggregatorApi {
 
     CrmConsumer bananaCrm;
     CrmConsumer strawberryCrm;
-    StorageManager storageManager;
+    AggregationManager aggregationManager;
 
     @Override
     public List<SupportCase> get(String product) {
         List<SupportCase> result = new ArrayList<>();
 
-        storageManager.refreshData();
-        for (SupportCase supportCase : storageManager.getSupportCases().values()){
+        aggregationManager.refreshData();
+        for (SupportCase supportCase : aggregationManager.getSupportCases().values()){
             if (!product.isEmpty()) {
                 if (Objects.equals(supportCase.getProductName(), product)) {
                     result.add(supportCase);

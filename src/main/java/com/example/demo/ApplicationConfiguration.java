@@ -33,7 +33,7 @@ public class ApplicationConfiguration implements WebMvcConfigurer {
     public CrmConstraintsHandler crmConstraintsHandler() { return new CrmConstraintsHandler(); }
 
     @Bean
-    public StorageManager storageManager() { return new StorageManager(
+    public AggregationManager aggregationManager() { return new AggregationManager(
             bananaCrm(),
             strawberryCrm(),
             crmConstraintsHandler());
